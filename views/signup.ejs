@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+<h1>Signup</h1>
+<table>
+    <form action="/api/createUser" method="POST">
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" id="firstname" name="firstname" placeholder="First Name" required></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" id="lastname" name="lastname" placeholder="Last Name" required></td>
+        </tr>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" id="username" name="username" placeholder="Username" required></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" id="email" name="email" placeholder="Email" required></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" id="password" name="password" placeholder="Password" required></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password"
+                       required></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><input type="text" id="phone" name="phone" placeholder="Phone" required></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Sign up"></input>
+            </td>
+        </tr>
+    </form>
+</table>
+</body>
+<script src="/script/signupPage.js"></script>
+</html>
