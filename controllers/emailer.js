@@ -28,7 +28,7 @@ const sendEmail = async (to, user) => {
         <html>
             <body style="font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333;">
                 <div style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <h1 style="color: #2b89c1;">Welcome, ${user.firstname}!</h1>
+                    <h1 style="color: #2b89c1;">Welcome, ${user.firstName}!</h1>
                     <p style="font-size: 18px;">We’re thrilled to have you on board. You can now manage your tasks, set reminders, and stay organized all in one place. Our app is here to help you be more productive and achieve your goals.</p>
                     <p style="font-size: 18px;">To get started:</p>
                     <ul style="font-size: 18px;">
