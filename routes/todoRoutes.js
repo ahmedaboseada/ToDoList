@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {userID: req.session.userID || null});
 })
 
 router.get('/home', (req, res) => {

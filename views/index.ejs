@@ -8,8 +8,13 @@
 </head>
 <body>
 <h1>hi</h1>
-<a href="/signup">Signup</a><br>
-<a href="/login">Login</a><br>
+<% if (!userID) { %>
+    <a href="/signup">Signup</a><br>
+    <a href="/login">Login</a><br>
+<% } else { %>
+    <h2>Welcome <%= userID %>,</h2>
+    <a href="/logout">Logout</a>
+<% } %>
 </body>
 <script src="/script/indexPage.js"></script>
 </html>
