@@ -18,13 +18,7 @@ const createUser = async (req, res) => {
         }
 
         hashedPassword = await bcrypt.hash(validatedInputs.password, 10);
-        bcrypt.compare(password, hashedPassword, (err, isMatch) => {
-            if (err) {
-                return res.status(400).json(err);
-            } else if (isMatch) {
-                console.log('Matches')
-            }
-        })
+
         const newUser = new User({
             firstName: validatedInputs.firstname,
             lastName: validatedInputs.lastname,  // Fixed here: used 'lastName' instead of 'lastLame'

@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
  */
 const sendEmail = async (to, user) => {
     const subject = 'Welcome to Your To-Do List App!';
-    const text = `Hello ${user.firstname},\n\nWelcome to your new To-Do List app! We are excited to help you manage your tasks and stay organized. You can start adding, updating, and completing your tasks right away!\n\nLet's get started!`;
+    const text = `Hello ${user.firstName},\n\nWelcome to your new To-Do List app! We are excited to help you manage your tasks and stay organized. You can start adding, updating, and completing your tasks right away!\n\nLet's get started!`;
 
     const html = `
         <html>
