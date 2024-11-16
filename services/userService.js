@@ -4,16 +4,51 @@ const bcrypt = require('bcrypt');
 const validator = require('../controllers/validateUserInputs');
 const eventManager = require('../events/index');
 const mongoose = require("mongoose");
+const validateUserInput = require('../utils/validateUserInput');
 
 class UserService {
+    // static async createUser(userData) {
+    //     try {
+    //         const validatedInputs = validator(userData);
+    //
+    //         if (validatedInputs.hasErrors) {
+    //             throw new Error(JSON.stringify(validatedInputs));
+    //         }
+    //
+    //         const hashedPassword = await bcrypt.hash(validatedInputs.password, 10);
+    //
+    //         const newUser = new User({
+    //             firstName: validatedInputs.firstname,
+    //             lastName: validatedInputs.lastname,
+    //             username: validatedInputs.username,
+    //             email: validatedInputs.email,
+    //             password: hashedPassword,
+    //             phone: validatedInputs.phone,
+    //             gender: validatedInputs.gender,
+    //         });
+    //
+    //         await newUser.save();
+    //         // services/userService.js
+    //         console.log('Emitting userCreated event with data:', userData); // Debug log
+    //         eventManager.emit('userCreated', userData);
+    //         return newUser;
+    //     } catch (err) {
+    //         if (err.code === 11000) {
+    //             // Handle duplicate key error
+    //             throw new Error(`A user with the phone number "${err.keyValue.phone}" already exists.`);
+    //         }
+    //         throw err; // Re-throw other errors
+    //     }
+    //
+    //
+    // }
+
     static async createUser(userData) {
         try {
-            const validatedInputs = validator(userData);
+            // Validate user input
+            const validatedInputs = validateUserInput(userData);
 
-            if (validatedInputs.hasErrors) {
-                throw new Error(JSON.stringify(validatedInputs));
-            }
-
+            // Hash the password
             const hashedPassword = await bcrypt.hash(validatedInputs.password, 10);
 
             const newUser = new User({
@@ -27,20 +62,18 @@ class UserService {
             });
 
             await newUser.save();
-            // services/userService.js
-            console.log('Emitting userCreated event with data:', userData); // Debug log
-            eventManager.emit('userCreated', userData);
+
+            // Emit userCreated event
+            eventManager.emit('userCreated', newUser);
             return newUser;
         } catch (err) {
             if (err.code === 11000) {
-                // Handle duplicate key error
                 throw new Error(`A user with the phone number "${err.keyValue.phone}" already exists.`);
             }
             throw err; // Re-throw other errors
         }
-
-
     }
+
 
     static async getUserByEmailOrUser(identifier) {
         const userData = await User.findOne({

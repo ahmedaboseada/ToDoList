@@ -1,6 +1,6 @@
 const mongoDB = require('mongoose')
-mongoDB.connect('mongodb://localhost:27017/toDoListAPP', {
-}).then(() => {
+// mongoDB.connect('mongodb://localhost:27017/toDoListAPP', {
+mongoDB.connect('mongodb+srv://kokoseda:116574Mm@devtamiapi.qyh3s.mongodb.net/toDoListAPP?retryWrites=true&w=majority&appName=DevtamiAPI', {}).then(() => {
     console.log('MongoDB Connected');
 }).catch((err) => {
     console.log(

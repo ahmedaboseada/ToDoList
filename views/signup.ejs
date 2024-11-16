@@ -8,6 +8,15 @@
 </head>
 <body>
 <h1>Signup</h1>
+<% if (errors) { %>
+    <div class="error-messages">
+        <ul>
+            <% Object.keys(errors).forEach(function (field) { %>
+                <li><strong><%= field %>:</strong> <%= errors[field] %></li>
+            <% }); %>
+        </ul>
+    </div>
+<% } %>
 <table>
     <form action="/api/createUser" method="POST">
         <tr>
