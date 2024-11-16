@@ -7,9 +7,7 @@ const toDoAPIs = require('./routes/todoAPIs')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo');
-import {injectSpeedInsights} from '@vercel/speed-insights';
 
-injectSpeedInsights();
 require('./events'); // Register all listeners
 require('dotenv').config();
 
